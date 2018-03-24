@@ -9,8 +9,8 @@ import (
 func main() {
 
 	app := cli.NewApp()
-	app.Name = Name
-	app.Version = Version
+	app.Name = "次郎(Jiro)"
+	app.Version = "1.0.0"
 	app.Author = "jiro4989"
 	app.Email = ""
 	app.Usage = "ツクールMVのデータをjsonからcsvといった表計算ソフトから編集しやすいデータ構造に相互変換します。"
