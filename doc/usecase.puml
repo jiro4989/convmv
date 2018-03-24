@@ -1,0 +1,87 @@
+@startuml img/usecase.png
+
+title 本ツールをダウンロードしてきてから使用するまでのフロー
+
+actor user
+
+== 初期化 ==
+
+activate os
+
+== 実行ファイルの取得 ==
+
+user -> browser : convmv.zipをgithub releaseからdownloadする
+activate browser
+browser -> user : convmv.zipをDownloadsフォルダに出力する
+deactivate browser
+
+== 実行ファイルの配置 ==
+
+user -> os : convmv.zipを解凍する
+os -> user : Downloadsフォルダにconvmvフォルダが生成される
+user -> os : convmvフォルダをダブルクリックする
+os -> user : convmフォルダがExplorerに表示される
+user -> os : convmv.exeをtkool_projectフォルダにコピーする
+os -> user : convmv.exeがtkool_projectフォルダにコピーされる
+
+== CSV生成 ==
+
+user -> convmv : convmvをダブルクリックする
+activate convmv
+convmv -> os : DOS窓を起動する
+os -> user : DOS窓内に 1) json to csv, 2) csv to jsonと表示
+user -> os : 1 と入力しEnter
+os -> user : edit target? と表示する
+user -> os : skillと入力しEnter
+os -> convmv : skillを返却する
+convmv -> os : skills.jsonの取得
+os -> convmv : skills.jsonの返却
+convmv -> convmv : skillデータを加工
+convmv -> os : data/convmv_skills.csvを出力
+os -> convmv : return nil
+convmv -> os : プログラムの終了
+deactivate convmv
+os -> user : DOS窓が閉じる
+
+== ファイル編集 ==
+
+user -> os : dataフォルダを開く
+os -> user : dataフォルダがExplorerに表示される
+
+user -> excel : convmv_skills.csvを開く
+activate excel
+excel -> user : convmv_skills.csvが表示される
+user -> excel : データを編集する
+excel -> user : データを保存する
+deactivate excel
+
+== JSON生成 ==
+
+user -> convmv : convmvをダブルクリックする
+activate convmv
+convmv -> os : DOS窓を起動する
+os -> user : DOS窓内に 1) json to csv, 2) csv to jsonと表示
+user -> os : 2 と入力しEnter
+os -> user : edit target? と表示する
+user -> os : skillと入力しEnter
+os -> convmv : skillを返却する
+convmv -> os : convmv_skills.csvの取得
+os -> convmv : convmv_skills.csvの返却
+convmv -> convmv : skillデータを加工
+convmv -> os : data/skills.jsonを上書き保存する
+os -> convmv : return nil
+convmv -> os : プログラムの終了
+deactivate convmv
+os -> user : DOS窓が閉じる
+
+== 動作確認 ==
+
+user -> tkoolmv : ツクールを起動する
+activate tkoolmv
+tkoolmv -> user : 画面が表示される
+user -> tkoolmv : スキル画面を開く
+tkoolmv -> user : スキル画面を表示する
+user -> user : スキルが正常に更新されていることを確認する
+deactivate tkoolmv
+
+@enduml
