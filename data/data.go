@@ -1,39 +1,39 @@
 package data
 
 type Skill struct {
-	AnimationID int64 `json:"animationId"`
+	AnimationID int `json:"animationId"`
 	Damage      struct {
 		Critical  bool   `json:"critical"`
-		ElementID int64  `json:"elementId"`
+		ElementID int    `json:"elementId"`
 		Formula   string `json:"formula"`
-		Type      int64  `json:"type"`
-		Variance  int64  `json:"variance"`
+		Type      int    `json:"type"`
+		Variance  int    `json:"variance"`
 	} `json:"damage"`
 	Description string `json:"description"`
 	Effects     []struct {
-		Code   int64 `json:"code"`
-		DataID int64 `json:"dataId"`
-		Value1 int64 `json:"value1"`
-		Value2 int64 `json:"value2"`
+		Code   int64   `json:"code"`
+		DataID int64   `json:"dataId"`
+		Value1 float64 `json:"value1"`
+		Value2 float64 `json:"value2"`
 	} `json:"effects"`
-	HitType          int64  `json:"hitType"`
-	IconIndex        int64  `json:"iconIndex"`
-	ID               int64  `json:"id"`
+	HitType          int    `json:"hitType"`
+	IconIndex        int    `json:"iconIndex"`
+	ID               int    `json:"id"`
 	Message1         string `json:"message1"`
 	Message2         string `json:"message2"`
-	MpCost           int64  `json:"mpCost"`
+	MpCost           int    `json:"mpCost"`
 	Name             string `json:"name"`
 	Note             string `json:"note"`
-	Occasion         int64  `json:"occasion"`
-	Repeats          int64  `json:"repeats"`
-	RequiredWtypeID1 int64  `json:"requiredWtypeId1"`
-	RequiredWtypeID2 int64  `json:"requiredWtypeId2"`
-	Scope            int64  `json:"scope"`
-	Speed            int64  `json:"speed"`
-	StypeID          int64  `json:"stypeId"`
-	SuccessRate      int64  `json:"successRate"`
-	TpCost           int64  `json:"tpCost"`
-	TpGain           int64  `json:"tpGain"`
+	Occasion         int    `json:"occasion"`
+	Repeats          int    `json:"repeats"`
+	RequiredWtypeID1 int    `json:"requiredWtypeId1"`
+	RequiredWtypeID2 int    `json:"requiredWtypeId2"`
+	Scope            int    `json:"scope"`
+	Speed            int    `json:"speed"`
+	StypeID          int    `json:"stypeId"`
+	SuccessRate      int    `json:"successRate"`
+	TpCost           int    `json:"tpCost"`
+	TpGain           int    `json:"tpGain"`
 }
 
 type System struct {
