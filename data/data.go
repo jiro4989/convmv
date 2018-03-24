@@ -1,5 +1,6 @@
 package data
 
+// Skill アクター、または敵が使用する技データ
 type Skill struct {
 	AnimationID int `json:"animationId"`
 	Damage      struct {
@@ -11,8 +12,8 @@ type Skill struct {
 	} `json:"damage"`
 	Description string `json:"description"`
 	Effects     []struct {
-		Code   int64   `json:"code"`
-		DataID int64   `json:"dataId"`
+		Code   int     `json:"code"`
+		DataID int     `json:"dataId"`
 		Value1 float64 `json:"value1"`
 		Value2 float64 `json:"value2"`
 	} `json:"effects"`
@@ -36,100 +37,101 @@ type Skill struct {
 	TpGain           int    `json:"tpGain"`
 }
 
+// System システムデータ
 type System struct {
 	Airship struct {
 		Bgm struct {
 			Name   string `json:"name"`
-			Pan    int64  `json:"pan"`
-			Pitch  int64  `json:"pitch"`
-			Volume int64  `json:"volume"`
+			Pan    int    `json:"pan"`
+			Pitch  int    `json:"pitch"`
+			Volume int    `json:"volume"`
 		} `json:"bgm"`
-		CharacterIndex int64  `json:"characterIndex"`
+		CharacterIndex int    `json:"characterIndex"`
 		CharacterName  string `json:"characterName"`
-		StartMapID     int64  `json:"startMapId"`
-		StartX         int64  `json:"startX"`
-		StartY         int64  `json:"startY"`
+		StartMapID     int    `json:"startMapId"`
+		StartX         int    `json:"startX"`
+		StartY         int    `json:"startY"`
 	} `json:"airship"`
 	ArmorTypes    []string `json:"armorTypes"`
 	AttackMotions []struct {
-		Type          int64 `json:"type"`
-		WeaponImageID int64 `json:"weaponImageId"`
+		Type          int `json:"type"`
+		WeaponImageID int `json:"weaponImageId"`
 	} `json:"attackMotions"`
 	BattleBgm struct {
 		Name   string `json:"name"`
-		Pan    int64  `json:"pan"`
-		Pitch  int64  `json:"pitch"`
-		Volume int64  `json:"volume"`
+		Pan    int    `json:"pan"`
+		Pitch  int    `json:"pitch"`
+		Volume int    `json:"volume"`
 	} `json:"battleBgm"`
 	Battleback1Name string `json:"battleback1Name"`
 	Battleback2Name string `json:"battleback2Name"`
-	BattlerHue      int64  `json:"battlerHue"`
+	BattlerHue      int    `json:"battlerHue"`
 	BattlerName     string `json:"battlerName"`
 	Boat            struct {
 		Bgm struct {
 			Name   string `json:"name"`
-			Pan    int64  `json:"pan"`
-			Pitch  int64  `json:"pitch"`
-			Volume int64  `json:"volume"`
+			Pan    int    `json:"pan"`
+			Pitch  int    `json:"pitch"`
+			Volume int    `json:"volume"`
 		} `json:"bgm"`
-		CharacterIndex int64  `json:"characterIndex"`
+		CharacterIndex int    `json:"characterIndex"`
 		CharacterName  string `json:"characterName"`
-		StartMapID     int64  `json:"startMapId"`
-		StartX         int64  `json:"startX"`
-		StartY         int64  `json:"startY"`
+		StartMapID     int    `json:"startMapId"`
+		StartX         int    `json:"startX"`
+		StartY         int    `json:"startY"`
 	} `json:"boat"`
 	CurrencyUnit string `json:"currencyUnit"`
 	DefeatMe     struct {
 		Name   string `json:"name"`
-		Pan    int64  `json:"pan"`
-		Pitch  int64  `json:"pitch"`
-		Volume int64  `json:"volume"`
+		Pan    int    `json:"pan"`
+		Pitch  int    `json:"pitch"`
+		Volume int    `json:"volume"`
 	} `json:"defeatMe"`
-	EditMapID  int64    `json:"editMapId"`
+	EditMapID  int      `json:"editMapId"`
 	Elements   []string `json:"elements"`
 	EquipTypes []string `json:"equipTypes"`
 	GameTitle  string   `json:"gameTitle"`
 	GameoverMe struct {
 		Name   string `json:"name"`
-		Pan    int64  `json:"pan"`
-		Pitch  int64  `json:"pitch"`
-		Volume int64  `json:"volume"`
+		Pan    int    `json:"pan"`
+		Pitch  int    `json:"pitch"`
+		Volume int    `json:"volume"`
 	} `json:"gameoverMe"`
-	Locale         string  `json:"locale"`
-	MagicSkills    []int64 `json:"magicSkills"`
-	MenuCommands   []bool  `json:"menuCommands"`
-	OptDisplayTp   bool    `json:"optDisplayTp"`
-	OptDrawTitle   bool    `json:"optDrawTitle"`
-	OptExtraExp    bool    `json:"optExtraExp"`
-	OptFloorDeath  bool    `json:"optFloorDeath"`
-	OptFollowers   bool    `json:"optFollowers"`
-	OptSideView    bool    `json:"optSideView"`
-	OptSlipDeath   bool    `json:"optSlipDeath"`
-	OptTransparent bool    `json:"optTransparent"`
-	PartyMembers   []int64 `json:"partyMembers"`
+	Locale         string `json:"locale"`
+	MagicSkills    []int  `json:"magicSkills"`
+	MenuCommands   []bool `json:"menuCommands"`
+	OptDisplayTp   bool   `json:"optDisplayTp"`
+	OptDrawTitle   bool   `json:"optDrawTitle"`
+	OptExtraExp    bool   `json:"optExtraExp"`
+	OptFloorDeath  bool   `json:"optFloorDeath"`
+	OptFollowers   bool   `json:"optFollowers"`
+	OptSideView    bool   `json:"optSideView"`
+	OptSlipDeath   bool   `json:"optSlipDeath"`
+	OptTransparent bool   `json:"optTransparent"`
+	PartyMembers   []int  `json:"partyMembers"`
 	Ship           struct {
 		Bgm struct {
 			Name   string `json:"name"`
-			Pan    int64  `json:"pan"`
-			Pitch  int64  `json:"pitch"`
-			Volume int64  `json:"volume"`
+			Pan    int    `json:"pan"`
+			Pitch  int    `json:"pitch"`
+			Volume int    `json:"volume"`
 		} `json:"bgm"`
-		CharacterIndex int64  `json:"characterIndex"`
+		CharacterIndex int    `json:"characterIndex"`
 		CharacterName  string `json:"characterName"`
-		StartMapID     int64  `json:"startMapId"`
-		StartX         int64  `json:"startX"`
-		StartY         int64  `json:"startY"`
+		StartMapID     int    `json:"startMapId"`
+		StartX         int    `json:"startX"`
+		StartY         int    `json:"startY"`
 	} `json:"ship"`
 	SkillTypes []string `json:"skillTypes"`
 	Sounds     []struct {
 		Name   string `json:"name"`
-		Pan    int64  `json:"pan"`
-		Pitch  int64  `json:"pitch"`
-		Volume int64  `json:"volume"`
+		Pan    int    `json:"pan"`
+		Pitch  int    `json:"pitch"`
+		Volume int    `json:"volume"`
 	} `json:"sounds"`
-	StartMapID int64    `json:"startMapId"`
-	StartX     int64    `json:"startX"`
-	StartY     int64    `json:"startY"`
+	StartMapID int      `json:"startMapId"`
+	StartX     int      `json:"startX"`
+	StartY     int      `json:"startY"`
 	Switches   []string `json:"switches"`
 	Terms      struct {
 		Basic    []string      `json:"basic"`
@@ -190,27 +192,43 @@ type System struct {
 		Params []string `json:"params"`
 	} `json:"terms"`
 	TestBattlers []struct {
-		ActorID int64   `json:"actorId"`
-		Equips  []int64 `json:"equips"`
-		Level   int64   `json:"level"`
+		ActorID int   `json:"actorId"`
+		Equips  []int `json:"equips"`
+		Level   int   `json:"level"`
 	} `json:"testBattlers"`
-	TestTroopID int64  `json:"testTroopId"`
+	TestTroopID int    `json:"testTroopId"`
 	Title1Name  string `json:"title1Name"`
 	Title2Name  string `json:"title2Name"`
 	TitleBgm    struct {
 		Name   string `json:"name"`
-		Pan    int64  `json:"pan"`
-		Pitch  int64  `json:"pitch"`
-		Volume int64  `json:"volume"`
+		Pan    int    `json:"pan"`
+		Pitch  int    `json:"pitch"`
+		Volume int    `json:"volume"`
 	} `json:"titleBgm"`
 	Variables []string `json:"variables"`
-	VersionID int64    `json:"versionId"`
+	VersionID int      `json:"versionId"`
 	VictoryMe struct {
 		Name   string `json:"name"`
-		Pan    int64  `json:"pan"`
-		Pitch  int64  `json:"pitch"`
-		Volume int64  `json:"volume"`
+		Pan    int    `json:"pan"`
+		Pitch  int    `json:"pitch"`
+		Volume int    `json:"volume"`
 	} `json:"victoryMe"`
 	WeaponTypes []string `json:"weaponTypes"`
-	WindowTone  []int64  `json:"windowTone"`
+	WindowTone  []int    `json:"windowTone"`
+}
+
+// システムに固定で決まっている文言
+type SystemText struct {
+	HitTypes    []string
+	DamageTypes []string
+	Repeats     []string
+	Scope       []string
+}
+
+// OS言語ごとのシステム文言
+var SystemTexts = map[string]SystemText{
+	"ja": SystemText{
+		HitTypes:    []string{"必中", "物理攻撃", "魔法攻撃"},
+		DamageTypes: []string{"なし", "HPダメージ", "MPダメージ", "HP回復", "MP回復", "HP吸収", "MP吸収"},
+	},
 }
