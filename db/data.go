@@ -1,4 +1,4 @@
-package data
+package db
 
 // Skill アクター、または敵が使用する技データ
 type Skill struct {

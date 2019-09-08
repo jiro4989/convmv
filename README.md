@@ -1,5 +1,8 @@
 # convmv (convert-mv)
 
+[文章イベントについてのメモ](https://scrapbox.io/jiro4989/%E3%83%84%E3%82%AF%E3%83%BC%E3%83%ABMV%E3%81%AE%E6%96%87%E7%AB%A0%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88)
+
+
 ***開発途中***
 
 ツクールMVのデータをjsonからCSVといったExcelやOpenOfficeから操作しやすいデータ構
