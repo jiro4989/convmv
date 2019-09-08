@@ -1,11 +1,13 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"os"
 
 	"github.com/docopt/docopt-go"
+	"github.com/jiro4989/tkmvdbctl/db"
 )
 
 const (
@@ -100,7 +102,69 @@ func SearchText(c Config) ErrorCode {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(b)
-	//json.Unmarshal(b)
+	var m db.Map
+	if err := json.Unmarshal(b, &m); err != nil {
+		panic(err)
+	}
+
+	var result []TextEvent
+	for _, evt := range m.Events {
+		if evt == nil {
+			continue
+		}
+		for _, page := range evt.Pages {
+			var textFlag bool
+			var textEvent TextEvent
+			for _, l := range page.List {
+				switch l.Code {
+				case 101: // メタイベント
+					if 0 < len(textEvent.Text) {
+						result = append(result, textEvent)
+						textEvent = TextEvent{}
+					}
+					textFlag = true
+					if v, ok := l.Parameters[0].(string); ok {
+						textEvent.Actor = v
+					}
+					if v, ok := l.Parameters[1].(int); ok {
+						textEvent.ActorIndex = v
+					}
+					if v, ok := l.Parameters[2].(int); ok {
+						textEvent.Background = v
+					}
+					if v, ok := l.Parameters[3].(int); ok {
+						textEvent.Position = v
+					}
+				case 401: // テキストイベント
+					if !textFlag {
+						continue
+					}
+					p := l.Parameters[0]
+					if t, ok := p.(string); ok {
+						textEvent.Text = append(textEvent.Text, t)
+					}
+				default:
+					if 0 < len(textEvent.Text) {
+						result = append(result, textEvent)
+						textEvent = TextEvent{}
+					}
+					textFlag = false
+				}
+			}
+		}
+	}
+	for _, v := range result {
+		for _, vv := range v.Text {
+			fmt.Println(vv)
+		}
+	}
 	return errorCodeOK
+}
+
+type TextEvent struct {
+	Actor      string
+	ActorIndex int
+	Background int
+	Position   int
+	Text       []string
 }
