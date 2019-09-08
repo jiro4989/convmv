@@ -36,7 +36,7 @@ Options:
 
 type (
 	Config struct {
-		Command    bool `docopt:"search"`
+		Command    bool `docopt:"search"` // 使っていないけれどdocoptの指摘を回避するため
 		Format     string
 		Target     string
 		Word       string
