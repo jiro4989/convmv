@@ -85,8 +85,30 @@ func SearchText(c Config) errorcode.ErrorCode {
 		panic(err)
 	}
 
+	// 文章イベントのみに絞り込み
+	textEvents := filterTextEvents(m.Events)
+
+	// 検索ワードとマッチするものに絞り込み
+	var matched []TextEvent
+	for _, v := range textEvents {
+		for _, t := range v.Text {
+			if strings.Contains(t, c.Word) {
+				matched = append(matched, v)
+				break
+			}
+		}
+	}
+
+	for _, v := range matched {
+		fmt.Println(v)
+	}
+
+	return errorcode.OK
+}
+
+func filterTextEvents(evts []*db.MapEvent) []TextEvent {
 	var textEvents []TextEvent
-	for _, evt := range m.Events {
+	for _, evt := range evts {
 		if evt == nil {
 			continue
 		}
@@ -131,21 +153,5 @@ func SearchText(c Config) errorcode.ErrorCode {
 			}
 		}
 	}
-
-	// 検索ワードとマッチするものに絞り込み
-	var matched []TextEvent
-	for _, v := range textEvents {
-		for _, t := range v.Text {
-			if strings.Contains(t, c.Word) {
-				matched = append(matched, v)
-				break
-			}
-		}
-	}
-
-	for _, v := range matched {
-		fmt.Println(v)
-	}
-
-	return errorcode.OK
+	return textEvents
 }
