@@ -19,7 +19,7 @@ func TestBindJsonToStruct(t *testing.T) {
 		t.Run(tt.desc, func(t *testing.T) {
 			b, err := ioutil.ReadFile(tt.in)
 			assert.Nil(t, err, tt.desc)
-			var m MapJson
+			var m Map
 			err = json.Unmarshal(b, &m)
 			assert.Nil(t, err, tt.desc)
 		})
