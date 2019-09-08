@@ -13,14 +13,14 @@ const (
 	doc = `tkmvdbctl はツクールMVのデータベースファイルを操作するコマンドです。
 
 Usage:
-	tkmvdbctl <command> [<args>...]
+	tkmvdbctl <command> [options] [<args>...]
 	tkmvdbctl -h | --help
 	tkmvdbctl -v | --version
 
 Available commands:
-	add    <target>
-	remove <target>
-	search <target> <word>
+	add
+	remove
+	search
 
 Options:
 	-h --help                     Print this help.
